@@ -20,7 +20,8 @@ function signup(req, res) {
 
 function createJWT(user) {
   return jwt.sign(
+    { user },
     process.env.SECRET,
-    { expiresIN: '24h'}
+    { expiresIn: '24h'}
   )
 }

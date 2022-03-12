@@ -23,6 +23,11 @@ function signup(user) {
   })
 }
 
+function getUser() {
+  return tokenService.getUserFromToken()
+}
+
 export {
   signup,
+  getUser
 }

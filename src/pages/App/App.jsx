@@ -4,9 +4,10 @@ import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import Landing from '../Landing/Landing'
+import * as authService from '../../services/authService'
 
 const App = () => {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState(authService.getUser());
 
 	return (
 		<>
@@ -23,5 +24,5 @@ const App = () => {
 		</>
 	)
 }
- 
+
 export default App
