@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import styles from './LoginForm.module.css'
+import * as authService from '../../services/authService'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const history = useHistory()
   const [formData, setFormData] = useState({
     email: '',
@@ -15,9 +16,15 @@ const LoginForm = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    history.push('/')
+    authService.login(formData)
+    .then(() => {
+      props.handleSignupOrLogin()
+      history.push('/')
+    })
+    .catch(err => {
+      alert('Invalid Credentials')
+    })
   }
-
   return (
     <form
       autoComplete="off"

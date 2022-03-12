@@ -21,6 +21,7 @@ const SignupForm = (props) => {
     evt.preventDefault()
     authService.signup(formData)
     .then(() => {
+      props.handleSignupOrLogin()
       history.push('/')
     })
     .catch(err => {
